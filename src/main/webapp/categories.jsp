@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Kickstarter_maven</title>
+<title>kickstarter</title>
 </head>
 <body>
 <h1><c:out value="${quote}" /></h1>
 <h1>Please choose category:</h1>
 	<c:forEach var="category" items="${categories}">
 		<h2>
-			<a href="/kickstarter_spring/projects?category=${category.id}">
+			<a href="/kickstarter/projects?category=${category.id}">
 				<c:out value="${category}" />
 			</a>
 		</h2>

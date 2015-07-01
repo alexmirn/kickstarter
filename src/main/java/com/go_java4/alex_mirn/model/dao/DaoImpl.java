@@ -1,23 +1,15 @@
 package com.go_java4.alex_mirn.model.dao;
 
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.Random;
-
-import javax.management.RuntimeErrorException;
-
 import com.go_java4.alex_mirn.model.entity.Category;
 import com.go_java4.alex_mirn.model.entity.Project;
 import com.go_java4.alex_mirn.model.entity.Quote;
 import com.go_java4.alex_mirn.util.ConnectionPool;
 import com.go_java4.alex_mirn.util.ConnectionPoolImpl;
-import com.go_java4.alex_mirn.view.io.ConsoleIO;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class DaoImpl implements Dao {
 	private ConnectionPool connectionPool;

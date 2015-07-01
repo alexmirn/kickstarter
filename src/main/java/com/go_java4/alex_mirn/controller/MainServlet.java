@@ -1,13 +1,14 @@
 package com.go_java4.alex_mirn.controller;
 
-import java.awt.List;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Random;
+import com.go_java4.alex_mirn.model.dao.CategoriesDao;
+import com.go_java4.alex_mirn.model.dao.ProjectsDao;
+import com.go_java4.alex_mirn.model.dao.QuotesDao;
+import com.go_java4.alex_mirn.model.entity.Category;
+import com.go_java4.alex_mirn.model.entity.Project;
+import com.go_java4.alex_mirn.model.entity.Quote;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -15,31 +16,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.context.ContextLoader;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-
-import com.go_java4.alex_mirn.model.dao.CategoriesDao;
-import com.go_java4.alex_mirn.model.dao.CategoriesDaoImpl;
-import com.go_java4.alex_mirn.model.dao.Dao;
-import com.go_java4.alex_mirn.model.dao.DaoImpl;
-import com.go_java4.alex_mirn.model.dao.ProjectsDao;
-import com.go_java4.alex_mirn.model.dao.ProjectsDaoImpl;
-import com.go_java4.alex_mirn.model.dao.QuotesDao;
-import com.go_java4.alex_mirn.model.dao.QuotesDaoImpl;
-import com.go_java4.alex_mirn.model.entity.Category;
-import com.go_java4.alex_mirn.model.entity.Project;
-import com.go_java4.alex_mirn.model.entity.Quote;
-import com.go_java4.alex_mirn.util.ConnectionPool;
-import com.go_java4.alex_mirn.util.ConnectionPoolImpl;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 //@WebServlet("/")
 @Controller
@@ -96,7 +76,7 @@ public class MainServlet extends HttpServlet {
 				req.getRequestDispatcher("projects.jsp").forward(req, resp);
 			} else if (action.startsWith("/oneProject")) {
 				int projectId = Integer.valueOf(req.getParameter("project"));
-				Project project = (Project) projectsDB.getProjectIndex(projectId);
+				Project project = projectsDB.getProjectIndex(projectId);
 				req.setAttribute("oneProject", project);
 				req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
 			}

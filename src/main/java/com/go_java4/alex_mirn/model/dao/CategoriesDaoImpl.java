@@ -15,21 +15,12 @@ import org.springframework.stereotype.Component;
 import com.go_java4.alex_mirn.model.entity.Category;
 import com.go_java4.alex_mirn.util.ConnectionPool;
 
-@Component
 public class CategoriesDaoImpl implements CategoriesDao{
 
 	public CategoriesDaoImpl(){}
 
-//	@Autowired
+	@Autowired
 	private DataSource dataSource;
-	
-	public DataSource getDataSource() {
-		return dataSource;
-	}
-
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 
 	Connection getConnection() throws SQLException {
 		return dataSource.getConnection();

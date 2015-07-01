@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>KickstarterX/projects</title>
+<title>kickstarter/projects</title>
 </head>
 <body>
 
 <h1>Select project:</h1>
 <c:forEach var="project" items="${projects}">
 		<h2>
-			<a href="/kickstarter_spring/oneProject?project=${project.projectId}">
+			<a href="/kickstarter/oneProject?project=${project.projectId}">
 				<c:out value="${project}" />
 			</a>
 		</h2>
