@@ -1,4 +1,4 @@
-package com.go_java4.alex_mirn.model.dao;
+package com.go_java4.alex_mirn.model.daoOld;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,6 @@ import javax.sql.DataSource;
 
 import com.go_java4.alex_mirn.model.entity.Category;
 import com.go_java4.alex_mirn.model.entity.Project;
-import com.go_java4.alex_mirn.util.ConnectionPool;
 
 public class ProjectsDaoImpl implements ProjectsDao{
 //	@Autowired

@@ -13,6 +13,8 @@ public class Project {
 	private String videoLink;
 	private String questions;
 
+	public Project() {}
+
 	public Project(int id, Category category, String name, String shortDescription,
 			int totalSum, int pledged, int daysLeft) {
 		this.projectId = id;
@@ -22,10 +24,6 @@ public class Project {
 		this.totalSum = totalSum;
 		this.pledged = pledged;
 		this.daysLeft = daysLeft;
-	}
-
-	public void setProjectId(int projectId) {
-		this.projectId = projectId;
 	}
 
 	public Project(int id, Category category, String name, String shortDescription,
@@ -41,18 +39,6 @@ public class Project {
 		this.history = history;
 		this.videoLink = videoLink;
 		this.questions = questions;
-	}
-
-	public String getHistory() {
-		return history;
-	}
-
-	public String getVideoLink() {
-		return videoLink;
-	}
-
-	public String getQuestions() {
-		return questions;
 	}
 
 	public String fullInfo() {
@@ -73,20 +59,79 @@ public class Project {
 		return projectId;
 	}
 
+	public void setProjectId(int projectId) {
+		this.projectId = projectId;
+	}
+
 	public Category getCategory() {
 		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getShortDescription() {
+		return shortDescription;
+	}
+
+	public void setShortDescription(String shortDescription) {
+		this.shortDescription = shortDescription;
+	}
+
+	public int getTotalSum() {
+		return totalSum;
+	}
+
+	public void setTotalSum(int totalSum) {
+		this.totalSum = totalSum;
+	}
+
+	public int getPledged() {
+		return pledged;
+	}
+
+	public void setPledged(int pledged) {
+		this.pledged = pledged;
+	}
+
+	public int getDaysLeft(int project_days_left) {
+		return daysLeft;
+	}
+
+	public void setDaysLeft(int daysLeft) {
+		this.daysLeft = daysLeft;
+	}
+
+	public String getHistory() {
+		return history;
 	}
 
 	public void setHistory(String history) {
 		this.history = history;
 	}
 
+	public String getVideoLink() {
+		return videoLink;
+	}
+
 	public void setVideoLink(String videoLink) {
 		this.videoLink = videoLink;
+	}
+
+	public String getQuestions() {
+		return questions;
 	}
 
 	public void setQuestions(String questions) {
 		this.questions = questions;
 	}
-
 }

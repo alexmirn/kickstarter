@@ -1,11 +1,14 @@
 package com.go_java4.alex_mirn.controller;
 
-import com.go_java4.alex_mirn.model.dao.CategoriesDao;
-import com.go_java4.alex_mirn.model.dao.ProjectsDao;
-import com.go_java4.alex_mirn.model.dao.QuotesDao;
+import com.go_java4.alex_mirn.model.daoOld.CategoriesDao;
+import com.go_java4.alex_mirn.model.daoOld.ProjectsDao;
+import com.go_java4.alex_mirn.model.daoOld.QuotesDao;
 import com.go_java4.alex_mirn.model.entity.Category;
 import com.go_java4.alex_mirn.model.entity.Project;
 import com.go_java4.alex_mirn.model.entity.Quote;
+import com.go_java4.alex_mirn.model.template.CategoryJDBCTemplate;
+import com.go_java4.alex_mirn.model.template.ProjectJDBCTemplate;
+import com.go_java4.alex_mirn.model.template.QuoteJDBCTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
@@ -38,7 +41,16 @@ public class MainServlet extends HttpServlet {
 
 	@Autowired
 	DataSource dataSource;
-	
+
+	@Autowired
+	QuoteJDBCTemplate quoteJDBCTemplate;
+
+    @Autowired
+    CategoryJDBCTemplate categoryJDBCTemplate;
+
+    @Autowired
+    ProjectJDBCTemplate projectJDBCTemplate;
+
 	@Autowired
 	CategoriesDao categoriesDB;
 	
@@ -62,27 +74,33 @@ public class MainServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = getAction(req);
 		req.getSession().setAttribute("connection", dataSource);
-		try {
+//		try {
 			if (action.startsWith("/categories")) {
-				Quote quote = quotesDB.getRandomQuote();
-				req.setAttribute("quote", quote);
-				ArrayList<Category> categories = (ArrayList<Category>) categoriesDB.getAll();
-				req.setAttribute("categories", categories);
+//				Quote quote = quotesDB.getRandomQuote();
+				Quote quote = quoteJDBCTemplate.getRandom();
+                req.setAttribute("quote", quote);
+//                ArrayList<Category> categories = (ArrayList<Category>) categoriesDB.getAll();
+                ArrayList<Category> categories = (ArrayList<Category>) categoryJDBCTemplate.getAll();
+                req.setAttribute("categories", categories);
 				req.getRequestDispatcher("categories.jsp").forward(req, resp);
 			} else if (action.startsWith("/projects")) {
 				int categoryId = Integer.valueOf(req.getParameter("category"));
-				ArrayList<Project> projects = (ArrayList<Project>) projectsDB.getProjectsInCategory(categoryId);
+//                Category category = new Category(categoryId, "o");
+//                category.setId(categoryId);
+//				ArrayList<Project> projects = (ArrayList<Project>) projectsDB.getProjectsInCategory(categoryId);
+				ArrayList<Project> projects = (ArrayList<Project>) projectJDBCTemplate.getProjectsInCategory(categoryId);
 				req.setAttribute("projects", projects);
 				req.getRequestDispatcher("projects.jsp").forward(req, resp);
 			} else if (action.startsWith("/oneProject")) {
 				int projectId = Integer.valueOf(req.getParameter("project"));
-				Project project = projectsDB.getProjectIndex(projectId);
+//				Project project = projectsDB.getProjectIndex(projectId);
+				Project project = projectJDBCTemplate.getById(projectId);
 				req.setAttribute("oneProject", project);
 				req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
 			}
-		} catch (SQLException e) {
-			throw new RuntimeException("Problems with creating of connection", e);
-		}
+//		} catch (SQLException e) {
+//			throw new RuntimeException("Problems with creating of connection", e);
+//		}
 	}
 
 	private String getAction(HttpServletRequest req) {

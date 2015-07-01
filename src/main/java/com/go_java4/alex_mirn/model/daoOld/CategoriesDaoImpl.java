@@ -1,4 +1,4 @@
-package com.go_java4.alex_mirn.model.dao;
+package com.go_java4.alex_mirn.model.daoOld;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,10 +10,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.go_java4.alex_mirn.model.entity.Category;
-import com.go_java4.alex_mirn.util.ConnectionPool;
 
 public class CategoriesDaoImpl implements CategoriesDao{
 
