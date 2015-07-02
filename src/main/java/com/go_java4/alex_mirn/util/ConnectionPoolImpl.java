@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConnectionPoolImpl implements ConnectionPool {
+public class ConnectionPoolImpl implements ConnectionPool {// TO DO - a real connection pool, not an imitation
 //	private static final String SQL_URL = "jdbc:postgresql://localhost:5432/kickstarter";
 //	private static final String SQL_URL = "jdbc:postgresql:C:\\workspace2\\kickstarterX\\resources\\database.db";
 //	private static final String SQL_USER = "postgres";
