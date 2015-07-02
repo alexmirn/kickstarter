@@ -9,8 +9,14 @@ import com.go_java4.alex_mirn.model.entity.Quote;
 import com.go_java4.alex_mirn.model.template.CategoryJDBCTemplate;
 import com.go_java4.alex_mirn.model.template.ProjectJDBCTemplate;
 import com.go_java4.alex_mirn.model.template.QuoteJDBCTemplate;
+import com.go_java4.alex_mirn.service.CategoryService;
+import com.go_java4.alex_mirn.service.ProjectService;
+import com.go_java4.alex_mirn.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import javax.servlet.ServletConfig;
@@ -43,27 +49,36 @@ public class MainServlet extends HttpServlet {
 	DataSource dataSource;
 
 	@Autowired
-	QuoteJDBCTemplate quoteJDBCTemplate;
-
-    @Autowired
-    CategoryJDBCTemplate categoryJDBCTemplate;
-
-    @Autowired
-    ProjectJDBCTemplate projectJDBCTemplate;
+	QuoteService quoteService;
 
 	@Autowired
-	CategoriesDao categoriesDB;
-	
-	@Autowired
-	QuotesDao quotesDB;
+	CategoryService categoryService;
 
 	@Autowired
-	ProjectsDao projectsDB;
+	ProjectService projectService;
+
+//	@Autowired
+//	QuoteJDBCTemplate quoteJDBCTemplate;
+//
+//	@Autowired
+//    CategoryJDBCTemplate categoryJDBCTemplate;
+//
+//	@Autowired
+//    ProjectJDBCTemplate projectJDBCTemplate;
+//
+//	@Autowired
+//	CategoriesDao categoriesDB;
+//
+//	@Autowired
+//	QuotesDao quotesDB;
+//
+//	@Autowired
+//	ProjectsDao projectsDB;
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
-		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, 
+		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
 													config.getServletContext());
 //		WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
 //        final AutowireCapableBeanFactory beanFactory = context.getAutowireCapableBeanFactory();
@@ -77,10 +92,12 @@ public class MainServlet extends HttpServlet {
 //		try {
 			if (action.startsWith("/categories")) {
 //				Quote quote = quotesDB.getRandomQuote();
-				Quote quote = quoteJDBCTemplate.getRandom();
+//				Quote quote = quoteJDBCTemplate.getRandom();
+				Quote quote = quoteService.getRandom();
                 req.setAttribute("quote", quote);
 //                ArrayList<Category> categories = (ArrayList<Category>) categoriesDB.getAll();
-                ArrayList<Category> categories = (ArrayList<Category>) categoryJDBCTemplate.getAll();
+//                ArrayList<Category> categories = (ArrayList<Category>) categoryJDBCTemplate.getAll();
+				ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
                 req.setAttribute("categories", categories);
 				req.getRequestDispatcher("categories.jsp").forward(req, resp);
 			} else if (action.startsWith("/projects")) {
@@ -88,13 +105,14 @@ public class MainServlet extends HttpServlet {
 //                Category category = new Category(categoryId, "o");
 //                category.setId(categoryId);
 //				ArrayList<Project> projects = (ArrayList<Project>) projectsDB.getProjectsInCategory(categoryId);
-				ArrayList<Project> projects = (ArrayList<Project>) projectJDBCTemplate.getProjectsInCategory(categoryId);
+//				ArrayList<Project> projects = (ArrayList<Project>) projectJDBCTemplate.getProjectsInCategory(categoryId);
+				ArrayList<Project> projects = (ArrayList<Project>) projectService.getProjectsInCategory(categoryId);
 				req.setAttribute("projects", projects);
 				req.getRequestDispatcher("projects.jsp").forward(req, resp);
 			} else if (action.startsWith("/oneProject")) {
 				int projectId = Integer.valueOf(req.getParameter("project"));
 //				Project project = projectsDB.getProjectIndex(projectId);
-				Project project = projectJDBCTemplate.getById(projectId);
+				Project project = projectService.getById(projectId);
 				req.setAttribute("oneProject", project);
 				req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
 			}
