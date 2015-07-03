@@ -1,21 +1,20 @@
 package com.go_java4.alex_mirn.service;
 
 import com.go_java4.alex_mirn.model.entity.Quote;
-import com.go_java4.alex_mirn.model.template.QuoteJDBCTemplate;
+import com.go_java4.alex_mirn.model.dao.template.QuoteJDBCTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by yalex on 02.07.15.
- */
+@Component
 public class QuoteService {
+
+    public QuoteService(){}
 
     @Autowired
     private QuoteJDBCTemplate quoteJDBCTemplate;
 
     public Quote getRandom() {
-        Quote quote = quoteJDBCTemplate.getRandom();
-        return quote;
+        return quoteJDBCTemplate.getRandom();
     }
 
     public void setQuoteJDBCTemplate(QuoteJDBCTemplate quoteJDBCTemplate) {
@@ -23,6 +22,7 @@ public class QuoteService {
     }
 
     public QuoteJDBCTemplate getQuoteJDBCTemplate() {
+
         return quoteJDBCTemplate;
     }
 }

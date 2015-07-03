@@ -11,12 +11,44 @@
     <param-value>classpath:application-context.xml</param-value>
   </context-param>
   
+  <!--<servlet>-->
+    <!--<servlet-name>MainServlet</servlet-name>-->
+    <!--<servlet-class>com.go_java4.alex_mirn.controller.MainServlet</servlet-class>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>MainServlet</servlet-name>-->
+    <!--<url-pattern>/</url-pattern>-->
+  <!--</servlet-mapping>-->
+
   <servlet>
-    <servlet-name>MainServlet</servlet-name>
-    <servlet-class>com.go_java4.alex_mirn.controller.MainServlet</servlet-class>
+    <servlet-name>CategoriesServlet</servlet-name>
+    <servlet-class>com.go_java4.alex_mirn.controller.CategoriesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MainServlet</servlet-name>
-    <url-pattern>/</url-pattern>
+    <servlet-name>CategoriesServlet</servlet-name>
+    <url-pattern>/categories</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ProjectsServlet</servlet-name>
+    <servlet-class>com.go_java4.alex_mirn.controller.ProjectsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProjectsServlet</servlet-name>
+    <url-pattern>/projects</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>OneProjectServlet</servlet-name>
+    <servlet-class>com.go_java4.alex_mirn.controller.OneProjectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OneProjectServlet</servlet-name>
+    <url-pattern>/oneProject</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>categories</welcome-file>
+  </welcome-file-list>
+
 </web-app>

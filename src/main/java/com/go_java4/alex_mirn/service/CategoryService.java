@@ -1,22 +1,17 @@
 package com.go_java4.alex_mirn.service;
 
 import com.go_java4.alex_mirn.model.entity.Category;
-import com.go_java4.alex_mirn.model.template.CategoryJDBCTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.go_java4.alex_mirn.model.dao.template.CategoryJDBCTemplate;
 
 import java.util.List;
 
-/**
- * Created by yalex on 02.07.15.
- */
 public class CategoryService {
 
-    @Autowired
+//    @Autowired
     private CategoryJDBCTemplate categoryJDBCTemplate;
 
     public List<Category> getAll() {
-        List categories = categoryJDBCTemplate.getAll();
-        return categories;
+        return categoryJDBCTemplate.getAll();
     }
 
     public void setCategoryJDBCTemplate(CategoryJDBCTemplate categoryJDBCTemplate) {

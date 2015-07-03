@@ -1,4 +1,4 @@
-package com.go_java4.alex_mirn.model.mapper;
+package com.go_java4.alex_mirn.model.dao.mapper;
 
 import com.go_java4.alex_mirn.model.entity.Quote;
 
@@ -7,9 +7,6 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by yalex on 01.07.15.
- */
 public class QuoteMapper implements RowMapper<Quote> {
 
     @Override

@@ -52,9 +52,9 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService">
-        <!--<property name="quoteJDBCTemplate" ref="quoteJDBCTemplate"/>-->
-    </bean>
+    <!--<bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService">-->
+        <!--&lt;!&ndash;<property name="quoteJDBCTemplate" ref="quoteJDBCTemplate"/>&ndash;&gt;-->
+    <!--</bean>-->
 
     <bean id="categoryService" class="com.go_java4.alex_mirn.service.CategoryService">
         <property name="categoryJDBCTemplate" ref="categoryJDBCTemplate"/>
