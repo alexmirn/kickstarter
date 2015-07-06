@@ -2,6 +2,8 @@ package com.go_java4.alex_mirn.service;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.go_java4.alex_mirn.model.dao.template.QuoteJDBCTemplate;
 import com.go_java4.alex_mirn.model.entity.Quote;
 import junit.framework.TestCase;
@@ -26,10 +28,11 @@ public class QuoteServiceTest extends TestCase {
     private QuoteJDBCTemplate quoteJDBCTemplate;
 
     @Test
+//    @ExpectedDatabase(value = "classpath:quoteTest/expectedCreateData.xml",
+//            assertionMode = DatabaseAssertionMode.NON_STRICT,
+//            table = "quote"
+//    )
     public void testGetRandomQuote() throws Exception {
-        int a;
-        a = 5;
-        assertEquals(5, a);
         Quote quote = quoteJDBCTemplate.getRandom();
         System.out.println(quote);
         assertNotNull(quote);

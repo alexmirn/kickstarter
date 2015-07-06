@@ -1,5 +1,10 @@
 package com.go_java4.alex_mirn.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+//@Entity
+//@Table(name="project")
 public class Project {
 
 	private int projectId;
