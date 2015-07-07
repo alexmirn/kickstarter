@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 @Controller
 public class CategoriesServlet extends HttpServlet {
-//    @Autowired
-//    DataSource dataSource;
+    @Autowired
+    DataSource dataSource;
 
     @Autowired
     QuoteService quoteService;
@@ -34,12 +34,12 @@ public class CategoriesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = getAction(req);
-//        req.getSession().setAttribute("connection", dataSource);
+        req.getSession().setAttribute("connection", dataSource);
         Quote quote = quoteService.getRandom();
         req.setAttribute("quote", quote);
 //            ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
 //            req.setAttribute("categories", categories);
-            req.getRequestDispatcher("categories.jsp").forward(req, resp);
+//            req.getRequestDispatcher("categories.jsp").forward(req, resp);
     }
 
     @Override
