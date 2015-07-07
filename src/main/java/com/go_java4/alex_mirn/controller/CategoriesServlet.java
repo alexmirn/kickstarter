@@ -39,7 +39,7 @@ public class CategoriesServlet extends HttpServlet {
         req.setAttribute("quote", quote);
 //            ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
 //            req.setAttribute("categories", categories);
-//            req.getRequestDispatcher("categories.jsp").forward(req, resp);
+            req.getRequestDispatcher("categories.jsp").forward(req, resp);
     }
 
     @Override
