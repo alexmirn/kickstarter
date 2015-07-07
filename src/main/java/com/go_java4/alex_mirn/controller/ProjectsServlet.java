@@ -23,15 +23,15 @@ public class ProjectsServlet extends HttpServlet {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
-    ProjectService projectService;
+//    @Autowired
+//    ProjectService projectService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int categoryId = Integer.valueOf(req.getParameter("category"));
-        ArrayList<Project> projects = (ArrayList<Project>) projectService.getProjectsInCategory(categoryId);
-        req.setAttribute("projects", projects);
-        req.getRequestDispatcher("projects.jsp").forward(req, resp);
+//        int categoryId = Integer.valueOf(req.getParameter("category"));
+//        ArrayList<Project> projects = (ArrayList<Project>) projectService.getProjectsInCategory(categoryId);
+//        req.setAttribute("projects", projects);
+//        req.getRequestDispatcher("projects.jsp").forward(req, resp);
     }
 
     @Override

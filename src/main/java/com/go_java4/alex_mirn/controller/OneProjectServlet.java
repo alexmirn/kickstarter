@@ -24,15 +24,15 @@ public class OneProjectServlet extends HttpServlet {
     @Autowired
     DataSource dataSource;
 
-    @Autowired
-    ProjectService projectService;
+//    @Autowired
+//    ProjectService projectService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int projectId = Integer.valueOf(req.getParameter("project"));
-        Project project = projectService.getById(projectId);
-        req.setAttribute("oneProject", project);
-        req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
+//        int projectId = Integer.valueOf(req.getParameter("project"));
+//        Project project = projectService.getById(projectId);
+//        req.setAttribute("oneProject", project);
+//        req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
     }
 
     @Override

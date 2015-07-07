@@ -22,23 +22,23 @@ import java.util.ArrayList;
 
 @Controller
 public class CategoriesServlet extends HttpServlet {
-    @Autowired
-    DataSource dataSource;
+//    @Autowired
+//    DataSource dataSource;
 
     @Autowired
     QuoteService quoteService;
 
-    @Autowired
-    CategoryService categoryService;
+//    @Autowired
+//    CategoryService categoryService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = getAction(req);
-        req.getSession().setAttribute("connection", dataSource);
-            Quote quote = quoteService.getRandom();
-            req.setAttribute("quote", quote);
-            ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
-            req.setAttribute("categories", categories);
+//        req.getSession().setAttribute("connection", dataSource);
+        Quote quote = quoteService.getRandom();
+        req.setAttribute("quote", quote);
+//            ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
+//            req.setAttribute("categories", categories);
             req.getRequestDispatcher("categories.jsp").forward(req, resp);
     }
 

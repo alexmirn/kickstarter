@@ -2,58 +2,33 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
        					   http://www.springframework.org/schema/beans/spring-beans.xsd 
        					   http://www.springframework.org/schema/context 
-       					   http://www.springframework.org/schema/context/spring-context.xsd">
+       					   http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:annotation-config/>
-    
-    <context:property-placeholder location="classpath:database.properties"/>
-    
+    <tx:annotation-driven/>
+    <!--<context:property-placeholder location="classpath:database.properties"/>-->
     <context:component-scan base-package="com.go_java4.alex_mirn"/>
+    <!--<import resource="hibernate-context.xml"/>-->
 
-    <import resource="hibernate-context.xml"/>
-
-
-
-
-
-
-    <!--<bean id="categoriesDB" class="com.go_java4.alex_mirn.model.daoOld.CategoriesDaoImpl"/>-->
-
-    <!--<bean id="quotesDB" class="com.go_java4.alex_mirn.model.daoOld.QuotesDaoImpl">-->
-       <!--<property name="dataSource" ref="dataSource"/>    -->
-    <!--</bean>-->
-    <!-- -->
-    <!--<bean id="projectsDB" class="com.go_java4.alex_mirn.model.daoOld.ProjectsDaoImpl">-->
-       <!--<property name="dataSource" ref="dataSource"/>    -->
-    <!--</bean>-->
-
-    <bean id="quoteJDBCTemplate" class="com.go_java4.alex_mirn.model.dao.template.QuoteJDBCTemplate">
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/kickstarter" />
+        <property name="username" value="postgres" />
+        <property name="password" value="1qw23er45t" />
     </bean>
 
-    <bean id="categoryJDBCTemplate" class="com.go_java4.alex_mirn.model.dao.template.CategoryJDBCTemplate">
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:hibernate.cfg.xml" />
+        <property name="packagesToScan" value="com.go_java4.alex_mirn" />
     </bean>
 
-    <bean id="projectJDBCTemplate" class="com.go_java4.alex_mirn.model.dao.template.ProjectJDBCTemplate">
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
-    <bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService">
-        <!--<property name="quoteJDBCTemplate" ref="quoteJDBCTemplate"/>-->
-    </bean>
-
-    <bean id="categoryService" class="com.go_java4.alex_mirn.service.CategoryService">
-        <property name="categoryJDBCTemplate" ref="categoryJDBCTemplate"/>
-    </bean>
-
-    <bean id="projectService" class="com.go_java4.alex_mirn.service.ProjectService">
-        <property name="projectJDBCTemplate" ref="projectJDBCTemplate"/>
-    </bean>
-
 
 </beans>
