@@ -9,10 +9,10 @@
        					   http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config/>
-    
+
     <context:property-placeholder location="classpath:database.properties"/>
-    
-    <context:component-scan base-package="com.go_java4.alex_mirn" />
+
+    <context:component-scan base-package="com.go_java4.alex_mirn"/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
         <property name="driverClassName" value="${driver}" />
@@ -24,11 +24,11 @@
     <!--<bean id="categoriesDB" class="com.go_java4.alex_mirn.model.daoOld.CategoriesDaoImpl"/>-->
 
     <!--<bean id="quotesDB" class="com.go_java4.alex_mirn.model.daoOld.QuotesDaoImpl">-->
-       <!--<property name="dataSource" ref="dataSource"/>    -->
+    <!--<property name="dataSource" ref="dataSource"/>    -->
     <!--</bean>-->
     <!-- -->
     <!--<bean id="projectsDB" class="com.go_java4.alex_mirn.model.daoOld.ProjectsDaoImpl">-->
-       <!--<property name="dataSource" ref="dataSource"/>    -->
+    <!--<property name="dataSource" ref="dataSource"/>    -->
     <!--</bean>-->
 
     <bean id="quoteJDBCTemplate" class="com.go_java4.alex_mirn.model.dao.template.QuoteJDBCTemplate">
@@ -43,9 +43,9 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <!--<bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService">-->
-        <!--&lt;!&ndash;<property name="quoteJDBCTemplate" ref="quoteJDBCTemplate"/>&ndash;&gt;-->
-    <!--</bean>-->
+    <bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService">
+        <!--<property name="quoteJDBCTemplate" ref="quoteJDBCTemplate"/>-->
+    </bean>
 
     <bean id="categoryService" class="com.go_java4.alex_mirn.service.CategoryService">
         <property name="categoryJDBCTemplate" ref="categoryJDBCTemplate"/>
@@ -54,5 +54,6 @@
     <bean id="projectService" class="com.go_java4.alex_mirn.service.ProjectService">
         <property name="projectJDBCTemplate" ref="projectJDBCTemplate"/>
     </bean>
+
 
 </beans>

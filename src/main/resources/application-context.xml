@@ -21,11 +21,6 @@
         <property name="password" value="${password}" />
     </bean>
 
-
-
-
-
-
     <!--<bean id="categoriesDB" class="com.go_java4.alex_mirn.model.daoOld.CategoriesDaoImpl"/>-->
 
     <!--<bean id="quotesDB" class="com.go_java4.alex_mirn.model.daoOld.QuotesDaoImpl">-->
