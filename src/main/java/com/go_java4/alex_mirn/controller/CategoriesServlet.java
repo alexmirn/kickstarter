@@ -28,6 +28,9 @@ public class CategoriesServlet extends HttpServlet {
     @Autowired
     QuoteService quoteService;
 
+    @Autowired
+    CategoryService categoryService;
+
 //    @Autowired
 //    CategoryService categoryService;
 
@@ -37,9 +40,9 @@ public class CategoriesServlet extends HttpServlet {
         req.getSession().setAttribute("connection", dataSource);
         Quote quote = quoteService.getRandom();
         req.setAttribute("quote", quote);
-//            ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
-//            req.setAttribute("categories", categories);
-            req.getRequestDispatcher("categories.jsp").forward(req, resp);
+        ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
+        req.setAttribute("categories", categories);
+        req.getRequestDispatcher("categories.jsp").forward(req, resp);
     }
 
     @Override
