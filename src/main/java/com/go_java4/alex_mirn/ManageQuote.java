@@ -18,7 +18,7 @@ public class ManageQuote {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
     public static void main(String[] args) {
-        System.out.println("Branch works");
+        System.out.println("JDBC template works");
         try{
 //            Configuration configuration = new Configuration();
 //            configuration.configure();
