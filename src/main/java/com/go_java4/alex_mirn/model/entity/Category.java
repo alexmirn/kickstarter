@@ -2,6 +2,7 @@ package com.go_java4.alex_mirn.model.entity;
 
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name="category")
@@ -42,4 +43,5 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 }

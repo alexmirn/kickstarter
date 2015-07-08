@@ -1,4 +1,4 @@
-package com.go_java4.alex_mirn.model.daoOld;
+package com.go_java4.alex_mirn.model.dao;
 
 
 import com.go_java4.alex_mirn.model.entity.Quote;
@@ -15,6 +15,7 @@ public class QuoteDaoImpl extends AbstractDao<Quote> implements QuoteDao {
 	}
 
 	@Override
+
 	public Quote getRandom() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		return (Quote) currentSession.createSQLQuery("SELECT * FROM quote ORDER BY RANDOM() LIMIT 1").addEntity(Quote.class).uniqueResult();

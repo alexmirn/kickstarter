@@ -1,4 +1,4 @@
-package com.go_java4.alex_mirn.model.daoOld;
+package com.go_java4.alex_mirn.model.dao;
 
 
 //public interface dao extends QuoteDao, CategoriesDao, ProjectsDao {

@@ -1,6 +1,6 @@
 package com.go_java4.alex_mirn.service;
 
-import com.go_java4.alex_mirn.model.daoOld.CategoriesDao;
+import com.go_java4.alex_mirn.model.dao.CategoriesDao;
 import com.go_java4.alex_mirn.model.entity.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

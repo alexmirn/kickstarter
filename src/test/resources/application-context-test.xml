@@ -31,13 +31,13 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <!--<bean id="categoriesDB" class="com.go_java4.alex_mirn.model.daoOld.CategoriesDaoImpl"/>-->
+    <!--<bean id="categoriesDB" class="com.go_java4.alex_mirn.model.daotegoriesDaoImpl"/>-->
 
-    <!--<bean id="quotesDB" class="com.go_java4.alex_mirn.model.daoOld.QuoteDaoImpl>-->
+    <!--<bean id="quotesDB" class="com.go_java4.alex_mirn.model.daooteDaoImpl>-->
     <!--<property name="dataSource" ref="dataSource"/>    -->
     <!--</bean>-->
     <!-- -->
-    <!--<bean id="projectsDB" class="com.go_java4.alex_mirn.model.daoOld.ProjectsDaoImpl">-->
+    <!--<bean id="projectsDB" class="com.go_java4.alex_mirn.model.daoojectsDaoImpl">-->
     <!--<property name="dataSource" ref="dataSource"/>    -->
     <!--</bean>-->
 

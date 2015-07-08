@@ -1,22 +1,43 @@
 package com.go_java4.alex_mirn.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-//@Entity
-//@Table(name="project")
+@Entity
+@Table(name="project")
 public class Project {
 
+	@Id
+	@Column(name="project_id")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int projectId;
-	private Category category;
+
+	@Column(name="project_name")
 	private String name;
+
+	@Column(name="project_description")
 	private String shortDescription;
+
+	@Column(name="project_total_sum")
 	private int totalSum;
+
+	@Column(name="project_pledged")
 	private int pledged;
+
+	@Column(name="project_days_left")
 	private int daysLeft;
+
+	@Column(name="project_history")
 	private String history;
+
+	@Column(name="project_video_link")
 	private String videoLink;
-	private String questions;
+
+	@ManyToOne
+	@JoinColumn(name="category_id")
+	private Category category;
+
+//	@Column(name="project_questions")
+//	private String questions;
 
 	public Project() {}
 
@@ -33,7 +54,7 @@ public class Project {
 
 	public Project(int id, Category category, String name, String shortDescription,
 			int totalSum, int pledged, int daysLeft, String history,
-			String videoLink, String questions) {
+			String videoLink) {
 		this.projectId = id;
 		this.category = category;
 		this.name = name;
@@ -43,13 +64,14 @@ public class Project {
 		this.daysLeft = daysLeft;
 		this.history = history;
 		this.videoLink = videoLink;
-		this.questions = questions;
+//		this.questions = questions;
 	}
 
 	public String fullInfo() {
 		return  toString()
 				+ "History: " + history + "\n" + "Videolink: " + videoLink
-				+ "\n" + "Answers and questions: " + questions;
+				+ "\n";
+//		+ "Answers and questions: " + questions;
 	}
 
 	@Override
@@ -132,11 +154,11 @@ public class Project {
 		this.videoLink = videoLink;
 	}
 
-	public String getQuestions() {
-		return questions;
-	}
+//	public String getQuestions() {
+//		return questions;
+//	}
 
-	public void setQuestions(String questions) {
-		this.questions = questions;
-	}
+//	public void setQuestions(String questions) {
+//		this.questions = questions;
+//	}
 }

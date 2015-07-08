@@ -1,16 +1,8 @@
-package com.go_java4.alex_mirn.model.daoOld;
+package com.go_java4.alex_mirn.model.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.sql.DataSource;
-
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import com.go_java4.alex_mirn.model.entity.Category;
 import org.springframework.stereotype.Repository;

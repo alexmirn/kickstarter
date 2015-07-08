@@ -1,26 +1,28 @@
 package com.go_java4.alex_mirn.service;
 
+import com.go_java4.alex_mirn.model.dao.ProjectsDao;
 import com.go_java4.alex_mirn.model.entity.Project;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service("projectService")
+@Transactional
 public class ProjectService {
-////    @Autowired
-//    private ProjectJDBCTemplate projectJDBCTemplate;
-//
-//
-//    public List<Project> getProjectsInCategory(int categoryId) {
-//        return  projectJDBCTemplate.getProjectsInCategory(categoryId);
-//    }
-//
-//    public Project getById(Integer id) {
-//        return projectJDBCTemplate.getById(id);
-//    }
-//    public ProjectJDBCTemplate getProjectJDBCTemplate() {
-//        return projectJDBCTemplate;
-//    }
-//
-//    public void setProjectJDBCTemplate(ProjectJDBCTemplate projectJDBCTemplate) {
-//        this.projectJDBCTemplate = projectJDBCTemplate;
-//    }
+
+    @Autowired
+    private ProjectsDao projectsDao;
+
+    public List<Project> getProjectsInCategory(int categoryId) {
+        return  projectsDao.getProjectsInCategory(categoryId);
+    }
+
+    public Project getById(int projectId) {
+        return  projectsDao.getById(projectId);
+    }
+//public List<Project> getProjectsInCategory(Category category) {
+//    return  projectsDao.getProjectsInCategory(category);
+//}
 }

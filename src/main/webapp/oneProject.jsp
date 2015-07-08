@@ -12,10 +12,10 @@
 
 <h1>Project full description:</h1>
 		<h2>
-				<c:out value="${oneProject}" />
-				<c:out value="${oneProject.history}" />
-				<c:out value="${oneProject.videoLink}" />
-				<c:out value="${oneProject.questions}" />
+				<c:out value="${project}" />
+				<c:out value="${project.history}" />
+				<c:out value="${project.videoLink}" />
+				<%--<c:out value="${oneProject.questions}" />--%>
 		</h2>
 </body>
 </html>

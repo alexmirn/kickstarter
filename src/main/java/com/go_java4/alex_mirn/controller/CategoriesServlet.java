@@ -23,21 +23,14 @@ import java.util.ArrayList;
 @Controller
 public class CategoriesServlet extends HttpServlet {
     @Autowired
-    DataSource dataSource;
-
-    @Autowired
     QuoteService quoteService;
 
     @Autowired
     CategoryService categoryService;
 
-//    @Autowired
-//    CategoryService categoryService;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = getAction(req);
-        req.getSession().setAttribute("connection", dataSource);
         Quote quote = quoteService.getRandom();
         req.setAttribute("quote", quote);
         ArrayList<Category> categories = (ArrayList<Category>) categoryService.getAll();
@@ -47,13 +40,7 @@ public class CategoriesServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        out.println("<html>");
-        out.println("<body>");
-        out.println("<h1>Hello Servlet!!!</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        // To DO
     }
 
     private String getAction(HttpServletRequest req) {

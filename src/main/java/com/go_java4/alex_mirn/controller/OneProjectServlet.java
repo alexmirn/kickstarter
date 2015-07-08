@@ -22,28 +22,19 @@ import java.io.PrintWriter;
 public class OneProjectServlet extends HttpServlet {
 
     @Autowired
-    DataSource dataSource;
-
-//    @Autowired
-//    ProjectService projectService;
+    ProjectService projectService;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        int projectId = Integer.valueOf(req.getParameter("project"));
-//        Project project = projectService.getById(projectId);
-//        req.setAttribute("oneProject", project);
-//        req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
+        int projectId = Integer.valueOf(req.getParameter("project"));
+        Project project = projectService.getById(projectId);
+        req.setAttribute("project", project);
+        req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        out.println("<html>");
-        out.println("<body>");
-        out.println("<h1>Hello Servlet!!!</h1>");
-        out.println("</body>");
-        out.println("</html>");
-        out.close();
+        // To DO
     }
 
     private String getAction(HttpServletRequest req) {
