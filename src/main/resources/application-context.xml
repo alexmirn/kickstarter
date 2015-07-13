@@ -8,27 +8,30 @@
        					   http://www.springframework.org/schema/context 
        					   http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:annotation-config/>
-    <tx:annotation-driven/>
-    <!--<context:property-placeholder location="classpath:database.properties"/>-->
-    <context:component-scan base-package="com.go_java4.alex_mirn"/>
-    <!--<import resource="hibernate-context.xml"/>-->
+    <!--<context:annotation-config/>-->
+    <!--<tx:annotation-driven/>-->
+    <!--&lt;!&ndash;<context:property-placeholder location="classpath:database.properties"/>&ndash;&gt;-->
+    <!--<context:component-scan base-package="com.go_java4.alex_mirn"/>-->
+    <!--&lt;!&ndash;<import resource="hibernate-context.xml"/>&ndash;&gt;-->
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
-        <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://localhost:5432/kickstarter" />
-        <property name="username" value="postgres" />
-        <property name="password" value="1qw23er45t" />
-    </bean>
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >-->
+        <!--<property name="driverClassName" value="org.postgresql.Driver" />-->
+        <!--<property name="url" value="jdbc:postgresql://localhost:5432/kickstarter" />-->
+        <!--<property name="username" value="postgres" />-->
+        <!--<property name="password" value="1qw23er45t" />-->
+    <!--</bean>-->
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation" value="classpath:hibernate.cfg.xml" />
-        <property name="packagesToScan" value="com.go_java4.alex_mirn" />
-    </bean>
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <!--<property name="configLocation" value="classpath:hibernate.cfg.xml" />-->
+        <!--<property name="packagesToScan" value="com.go_java4.alex_mirn" />-->
+    <!--</bean>-->
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
+    <!--<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="QuoteService" class="com.go_java4.alex_mirn.service.QuoteService"/>-->
+
 
 </beans>

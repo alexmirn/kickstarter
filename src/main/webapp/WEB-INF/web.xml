@@ -1,54 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>kickstarter</display-name>
-  
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsl="http://www.w3.org/2001/XMLSchema-instance"
+         xsl:schemaLocation="http://java.sun.com/xml/ns/j2ee
+		 http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+  <display-name>Kickstarter</display-name>
+
+  <!-- LISTENER -->
   <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    <listener-class>org.springframework.web.context.ContextLoaderListener
+    </listener-class>
   </listener>
+
+  <!-- SPRING MVC -->
+  <servlet>
+    <servlet-name>mvc-dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>mvc-dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
 
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:application-context.xml</param-value>
+    <param-value>
+      /WEB-INF/mvc-dispatcher-servlet.xml
+    </param-value>
   </context-param>
-  
-  <!--<servlet>-->
-    <!--<servlet-name>MainServlet</servlet-name>-->
-    <!--<servlet-class>com.go_java4.alex_mirn.controller.MainServlet</servlet-class>-->
-  <!--</servlet>-->
-  <!--<servlet-mapping>-->
-    <!--<servlet-name>MainServlet</servlet-name>-->
-    <!--<url-pattern>/</url-pattern>-->
-  <!--</servlet-mapping>-->
-
-  <servlet>
-    <servlet-name>CategoriesServlet</servlet-name>
-    <servlet-class>com.go_java4.alex_mirn.controller.CategoriesServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CategoriesServlet</servlet-name>
-    <url-pattern>/categories</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>ProjectsServlet</servlet-name>
-    <servlet-class>com.go_java4.alex_mirn.controller.ProjectsServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ProjectsServlet</servlet-name>
-    <url-pattern>/projects</url-pattern>
-  </servlet-mapping>
-
-  <servlet>
-    <servlet-name>OneProjectServlet</servlet-name>
-    <servlet-class>com.go_java4.alex_mirn.controller.OneProjectServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>OneProjectServlet</servlet-name>
-    <url-pattern>/oneProject</url-pattern>
-  </servlet-mapping>
-
-  <welcome-file-list>
-    <welcome-file>categories</welcome-file>
-  </welcome-file-list>
 
 </web-app>
