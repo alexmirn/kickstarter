@@ -11,7 +11,7 @@
 <body>
 <h1><c:out value="${quote}" /></h1>
 <h1>Please choose category:</h1>
-	<c:forEach var="category" items="${categories_all}">
+	<c:forEach var="category" items="${categories}">
 		<h2>
 			<a href="/kickstarter/projects?category=${category.id}">
 				<c:out value="${category}" />

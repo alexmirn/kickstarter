@@ -23,7 +23,7 @@ public class CategoriesController {
     public String showCategories(ModelMap model) {
 
         model.addAttribute("quote", quoteService.getRandom());
-        model.addAttribute("categories_all", categoryService.getAll());
+        model.addAttribute("categories", categoryService.getAll());
         return "categories";
     }
 }
