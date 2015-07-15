@@ -1,0 +1,65 @@
+DROP TABLE "quote" CASCADE;
+DROP TABLE "category" CASCADE;
+DROP TABLE "project" CASCADE;
+
+CREATE TABLE "quote" (
+    "quote_id" SERIAL PRIMARY KEY,
+    "quote_name" text
+);
+
+CREATE TABLE "category" (
+    "category_id" SERIAL PRIMARY KEY,
+    "category_name" varchar(255)
+);
+
+CREATE TABLE "project" (
+    "project_id" SERIAL PRIMARY KEY,
+    "project_name" varchar(255),
+    "project_description" text,
+    "project_total_sum" integer,
+    "project_pledged" integer,
+    "project_days_left" integer,
+    "project_history" text,
+    "project_video_link" varchar(255),
+    "category_id" integer
+    
+);
+
+ALTER TABLE "project" ADD CONSTRAINT "fk_category_project_id" 
+FOREIGN KEY ("category_id") REFERENCES "category" ("category_id");
+
+INSERT INTO "quote" (quote_name) VALUES
+('Impossible is nothing'),
+('Smile makes you better'),
+('Just do it!!!');
+
+INSERT INTO "category" (category_name) VALUES
+('Medicine'),
+('Music');
+
+INSERT INTO "project" (project_name, project_description, project_total_sum,
+project_pledged, project_days_left, category_id) VALUES
+('Alco Tester', 'Phenomenal alco test just by scanning your eyes', 
+50000, 23000, 15, 1),
+('Eyes training device', 'Get 100% sight', 100000, 15000, 24, 1),
+('Sing Melody','Sing melody and hear how it sounds in different musical instruments', 
+15000, 22000, 110, 2);
+
+
+select project_id, project.category_id, category.category_name, 
+project_name, project_description, 
+project_total_sum, project_pledged, project_days_left, 
+project_history, project_video_link 
+from project
+natural join category
+order by project_id;
+
+
+select project_id, project.category_id, 
+category.category_name, project_name, 
+project_description, project_total_sum, 
+project_pledged, project_days_left, 
+project_history, project_video_link 
+from project
+natural join category
+where project_id = 2;

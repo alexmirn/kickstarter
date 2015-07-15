@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <quote id="1" value="value 1" />
+    <quote id="2" value="value 2" />
+    <quote id="3" value="value 3" />
+</dataset>

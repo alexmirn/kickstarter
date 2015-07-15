@@ -28,7 +28,8 @@ public class OneProjectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int projectId = Integer.valueOf(req.getParameter("project"));
         Project project = projectService.getById(projectId);
-        req.setAttribute("project", project);
+        req.setAttribute("oneProject", project);
+        System.out.println(project);
         req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
     }
 
