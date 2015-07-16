@@ -5,7 +5,7 @@ import com.github.springtestdbunit.annotation.DatabaseOperation;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
-import com.go_java4.alex_mirn.model.dao.QuoteDao;
+import com.go_java4.alex_mirn.model.entity.Category;
 import com.go_java4.alex_mirn.model.entity.Quote;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,8 +19,8 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context-test.xml"})
@@ -31,59 +31,58 @@ import static org.junit.Assert.assertNotNull;
         TransactionalTestExecutionListener.class
 })
 @DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
-public class QuoteDaoImplTest {
+public class CategoryDaoImplTest {
     @Autowired
-    QuoteDao quoteDao;
-
-    Quote quote = new Quote();
+    CategoriesDao categoriesDao;
 
     @Test
-    public void testGetRandom() throws Exception {
-        Quote random = quoteDao.getRandom();
-        Assert.assertNotNull(random);
+    public void getAllTest() throws Exception {
+        ArrayList<Category> categories = (ArrayList<Category>) categoriesDao.getAll();
+        Assert.assertEquals("value 1", categories.get(0).getName());
+        Assert.assertEquals("value 2", categories.get(1).getName());
+        Assert.assertEquals("value 3", categories.get(2).getName());
     }
 
     @Test
-    public void getByID() {
-        Quote quoteTest = quoteDao.getById(1);
-        System.out.println(quoteTest);
-        Assert.assertEquals("value 1", quoteTest.getQuote());
+    public void getByIdTest() {
+        Category category = categoriesDao.getById(1);
+        Assert.assertEquals("value 1", category.getName());
     }
 
     @Test
     @Rollback(false)
     @ExpectedDatabase(
-            value = "classpath:quoteTest/expectedCreateData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT, // in expexted dataSet may not be not all columns
-            table = "quote"
+            value = "classpath:categoryTest/expectedCreateData.xml",
+            assertionMode = DatabaseAssertionMode.NON_STRICT, // in expected dataSet may not be not all columns
+            table = "category"
     )
     public void testCreate() throws Exception {
-        Quote quote = new Quote("created value");
-        quoteDao.create(quote);
+        Category category = new Category("created category");
+        categoriesDao.create(category);
     }
 
     @Test
     @Rollback(false)
     @ExpectedDatabase(
-            value = "classpath:quoteTest/expectedUpdateData.xml",
+            value = "classpath:categoryTest/expectedUpdateData.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "quote"
+            table = "category"
     )
     public void testUpdate() throws Exception {
-        Quote updateQuote = quoteDao.getById(3);
-        updateQuote.setQuote("updated value");
-        quoteDao.update(updateQuote);
+        Category updateCategory = categoriesDao.getById(3);
+        updateCategory.setName("updated category");
+        categoriesDao.update(updateCategory);
     }
 
     @Test
     @Rollback(false)
     @ExpectedDatabase(
-            value = "classpath:quoteTest/expectedDeleteData.xml",
+            value = "classpath:categoryTest/expectedDeleteData.xml",
             assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "quote"
+            table = "category"
     )
     public void testDelete() throws Exception {
-        Quote deleteQuote = quoteDao.getById(2);
-        quoteDao.delete(deleteQuote);
+        Category deleteCategory = categoriesDao.getById(2);
+        categoriesDao.delete(deleteCategory);
     }
 }

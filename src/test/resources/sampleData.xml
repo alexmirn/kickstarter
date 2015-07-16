@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <!--<quote quote_name="value 1" />-->
-    <!--<quote quote_name="value 2" />-->
-    <!--<quote quote_name="value 3" />-->
+
     <quote quote_id="1" quote_name="value 1" />
     <quote quote_id="2" quote_name="value 2" />
     <quote quote_id="3" quote_name="value 3" />
+
+    <category category_id="1" category_name="value 1" />
+    <category category_id="2" category_name="value 2" />
+    <category category_id="3" category_name="value 3" />
 </dataset>
