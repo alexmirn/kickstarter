@@ -8,7 +8,7 @@
     </property>
     <property name="hibernate.cache.use_query_cache">false</property>
     <property name="hibernate.cache.use_second_level_cache">false</property>
-    <!--<property name="hbm2ddl.auto">create</property> &lt;!&ndash; this will let us create the test database automatically from our mapping files (or annotations) &ndash;&gt;-->
+    <property name="hbm2ddl.auto">create</property> <!-- this will let us create the test database automatically from our mapping files (or annotations) -->
     <property name="show_sql">true</property>
     <mapping class="com.go_java4.alex_mirn.model.entity.Quote"/>
     <mapping class="com.go_java4.alex_mirn.model.entity.Project"/>

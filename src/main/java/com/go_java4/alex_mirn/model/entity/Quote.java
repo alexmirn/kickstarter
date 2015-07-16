@@ -17,14 +17,14 @@ public class Quote {
     public Quote() {
     }
 
+    public Quote(String quote) {
+        this.quote = quote;
+    }
+
 	public Quote(int id, String quote) {
 		this.id = id;
 		this.quote = quote;
 	}
-
-    public Quote(String quote) {
-        this.quote = quote;
-    }
 
 	@Override
 	public String toString() {
