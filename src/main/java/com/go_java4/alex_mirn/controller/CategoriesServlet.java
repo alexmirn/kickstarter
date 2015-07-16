@@ -38,11 +38,6 @@ public class CategoriesServlet extends HttpServlet {
         req.getRequestDispatcher("categories.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // To DO
-    }
-
     private String getAction(HttpServletRequest req) {
         String requestUri = req.getRequestURI();
         return requestUri.substring(req.getContextPath().length(), requestUri.length());

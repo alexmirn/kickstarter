@@ -33,10 +33,7 @@ public class OneProjectServlet extends HttpServlet {
         req.getRequestDispatcher("oneProject.jsp").forward(req, resp);
     }
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // To DO
-    }
+
 
     private String getAction(HttpServletRequest req) {
         String requestUri = req.getRequestURI();

@@ -6,7 +6,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.go_java4.alex_mirn.model.entity.Category;
-import com.go_java4.alex_mirn.model.entity.Quote;
+import com.go_java4.alex_mirn.model.entity.Project;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context-test.xml"})
@@ -31,58 +30,58 @@ import java.util.List;
         TransactionalTestExecutionListener.class
 })
 @DatabaseSetup(value = "classpath:sampleData.xml", type = DatabaseOperation.CLEAN_INSERT)
-public class CategoryDaoImplTest {
+public class ProjectDaoImplTest {
     @Autowired
-    CategoriesDao categoriesDao;
+    ProjectsDao projectsDao;
 
     @Test
     public void getAllTest() throws Exception {
-        ArrayList<Category> categories = (ArrayList<Category>) categoriesDao.getAll();
-        Assert.assertEquals("value 1", categories.get(0).getName());
-        Assert.assertEquals("value 2", categories.get(1).getName());
-        Assert.assertEquals("value 3", categories.get(2).getName());
+        ArrayList<Project> projects = (ArrayList<Project>) projectsDao.getProjectsInCategory(1);
+        Assert.assertEquals("value 1", projects.get(0).getName());
+        Assert.assertEquals("value 2", projects.get(1).getName());
     }
 
     @Test
     public void getByIdTest() {
-        Category category = categoriesDao.getById(1);
-        Assert.assertEquals("value 1", category.getName());
+        Project project = projectsDao.getById(1);
+        Assert.assertEquals("value 1", project.getName());
     }
 
     @Test
     @Rollback(false)
     @ExpectedDatabase(
-            value = "classpath:categoryTest/expectedCreateData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT, // in expected dataSet may not be not all columns
-            table = "category"
+            value = "classpath:projectTest/expectedCreateData.xml",
+            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED, // in expected dataSet may not be not all columns
+            table = "project"
     )
     public void testCreate() throws Exception {
-        Category category = new Category("created category");
-        categoriesDao.create(category);
+        Project project = new Project(new Category(1,"value 1"),"created project", "created description",
+                1, 1, 1);
+        projectsDao.create(project);
     }
 
     @Test
     @Rollback(false)
     @ExpectedDatabase(
-            value = "classpath:categoryTest/expectedUpdateData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "category"
+            value = "classpath:projectTest/expectedUpdateData.xml",
+            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED,
+            table = "project"
     )
     public void testUpdate() throws Exception {
-        Category updateCategory = categoriesDao.getById(3);
-        updateCategory.setName("updated category");
-        categoriesDao.update(updateCategory);
+        Project updateProject = projectsDao.getById(3);
+        updateProject.setName("updated project");
+        projectsDao.update(updateProject);
     }
 
     @Test
     @Rollback(false)
     @ExpectedDatabase(
-            value = "classpath:categoryTest/expectedDeleteData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT,
-            table = "category"
+            value = "classpath:projectTest/expectedDeleteData.xml",
+            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED,
+            table = "project"
     )
     public void testDelete() throws Exception {
-        Category deleteCategory = categoriesDao.getById(3);
-        categoriesDao.delete(deleteCategory);
+        Project deleteProject = projectsDao.getById(2);
+        projectsDao.delete(deleteProject);
     }
 }

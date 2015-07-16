@@ -52,6 +52,16 @@ public class Project {
 		this.daysLeft = daysLeft;
 	}
 
+	public Project(Category category, String name, String shortDescription,
+				   int totalSum, int pledged, int daysLeft) {
+		this.category = category;
+		this.name = name;
+		this.shortDescription = shortDescription;
+		this.totalSum = totalSum;
+		this.pledged = pledged;
+		this.daysLeft = daysLeft;
+	}
+
 	public Project(int id, Category category, String name, String shortDescription,
 			int totalSum, int pledged, int daysLeft, String history,
 			String videoLink) {

@@ -22,7 +22,5 @@ public class ProjectService {
     public Project getById(int projectId) {
         return  projectsDao.getById(projectId);
     }
-//public List<Project> getProjectsInCategory(Category category) {
-//    return  projectsDao.getProjectsInCategory(category);
-//}
+
 }
