@@ -36,6 +36,11 @@ public class Project {
 	@JoinColumn(name="category_id")
 	private Category category;
 
+//	@SuppressWarnings("JpaAttributeTypeInspection")
+//	@ManyToOne
+//	@JoinColumn(name="user_id")
+//	private User user;
+
 //	@Column(name="project_questions")
 //	private String questions;
 
@@ -63,8 +68,10 @@ public class Project {
 	}
 
 	public Project(int id, Category category, String name, String shortDescription,
-			int totalSum, int pledged, int daysLeft, String history,
-			String videoLink) {
+				   int totalSum, int pledged, int daysLeft, String history,
+//				   String videoLink, User user) {
+				   String videoLink) {
+
 		this.projectId = id;
 		this.category = category;
 		this.name = name;
@@ -75,6 +82,7 @@ public class Project {
 		this.history = history;
 		this.videoLink = videoLink;
 //		this.questions = questions;
+//		this.user = user;
 	}
 
 	public String fullInfo() {
