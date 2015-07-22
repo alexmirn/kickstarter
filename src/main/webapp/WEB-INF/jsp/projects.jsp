@@ -14,7 +14,8 @@
 <h1>Select project:</h1>
 <c:forEach var="project" items="${projects}">
 		<h2>
-			<a href="/kickstarter/oneProject?project=${project.projectId}">
+			<%--<a href="/kickstarter/oneProject?project=${project.projectId}">--%>
+			<a href="/kickstarter/oneProject/${project.projectId}">
 				<c:out value="${project}" />
 			</a>
 		</h2>
