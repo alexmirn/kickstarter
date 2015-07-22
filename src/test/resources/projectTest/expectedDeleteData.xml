@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <project project_name="value 1" project_days_left="1" project_pledged="1" project_description="description 1" project_total_sum="1" category_id="1"/>
-    <project project_name="value 3" project_days_left="3" project_pledged="3" project_description="description 3" project_total_sum="3" category_id="2"/>
+    <project project_name="value 1" project_days_left="1" project_pledged="1" project_description="description 1" project_total_sum="1" category_id="1" user_id="1"/>
+    <project project_name="value 3" project_days_left="3" project_pledged="3" project_description="description 3" project_total_sum="3" category_id="2" user_id="1"/>
 </dataset>

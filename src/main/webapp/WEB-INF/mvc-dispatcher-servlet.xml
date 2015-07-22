@@ -40,7 +40,8 @@
         <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"/>-->
     </bean>
 
-    <bean id="QuoteService" class="com.go_java4.alex_mirn.service.QuoteService"/>
+    <bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService"/>
+    <!--<bean id="UserService" class="com.go_java4.alex_mirn.service.UserService"/>-->
 
     <!--SPRING_MVC VIEW RESOLVER-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

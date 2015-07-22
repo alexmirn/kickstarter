@@ -1,6 +1,7 @@
 package com.go_java4.alex_mirn.service;
 
 import com.go_java4.alex_mirn.model.dao.ProjectsDao;
+import com.go_java4.alex_mirn.model.dao.UserDao;
 import com.go_java4.alex_mirn.model.entity.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ public class ProjectService {
 
     @Autowired
     private ProjectsDao projectsDao;
+
+//    @Autowired
+//    private UserDao userDao;
 
     public List<Project> getProjectsInCategory(int categoryId) {
         return  projectsDao.getProjectsInCategory(categoryId);

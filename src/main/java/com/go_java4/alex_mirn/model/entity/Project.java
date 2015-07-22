@@ -37,9 +37,10 @@ public class Project {
 	private Category category;
 
 //	@SuppressWarnings("JpaAttributeTypeInspection")
-//	@ManyToOne
-//	@JoinColumn(name="user_id")
-//	private User user;
+//	@SuppressWarnings("JpaAttributeTypeInspection")
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 //	@Column(name="project_questions")
 //	private String questions;
@@ -47,7 +48,7 @@ public class Project {
 	public Project() {}
 
 	public Project(int id, Category category, String name, String shortDescription,
-			int totalSum, int pledged, int daysLeft) {
+			int totalSum, int pledged, int daysLeft, User user) {
 		this.projectId = id;
 		this.category = category;
 		this.name = name;
@@ -55,22 +56,25 @@ public class Project {
 		this.totalSum = totalSum;
 		this.pledged = pledged;
 		this.daysLeft = daysLeft;
+		this.user = user;
+
 	}
 
 	public Project(Category category, String name, String shortDescription,
-				   int totalSum, int pledged, int daysLeft) {
+				   int totalSum, int pledged, int daysLeft, User user) {
 		this.category = category;
 		this.name = name;
 		this.shortDescription = shortDescription;
 		this.totalSum = totalSum;
 		this.pledged = pledged;
 		this.daysLeft = daysLeft;
+		this.user = user;
 	}
 
 	public Project(int id, Category category, String name, String shortDescription,
 				   int totalSum, int pledged, int daysLeft, String history,
-//				   String videoLink, User user) {
-				   String videoLink) {
+				   String videoLink, User user) {
+//				   String videoLink) {
 
 		this.projectId = id;
 		this.category = category;
@@ -82,7 +86,7 @@ public class Project {
 		this.history = history;
 		this.videoLink = videoLink;
 //		this.questions = questions;
-//		this.user = user;
+		this.user = user;
 	}
 
 	public String fullInfo() {
@@ -173,10 +177,22 @@ public class Project {
 	}
 
 //	public String getQuestions() {
-//		return questions;
-//	}
 
 //	public void setQuestions(String questions) {
+
+	//	}
 //		this.questions = questions;
 //	}
+//		return questions;
+	public int getDaysLeft() {
+		return daysLeft;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

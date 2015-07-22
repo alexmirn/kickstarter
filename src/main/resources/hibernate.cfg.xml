@@ -10,5 +10,6 @@
     <mapping class="com.go_java4.alex_mirn.model.entity.Quote"/>
     <mapping class="com.go_java4.alex_mirn.model.entity.Project"/>
     <mapping class="com.go_java4.alex_mirn.model.entity.Category"/>
+    <mapping class="com.go_java4.alex_mirn.model.entity.User"/>
 </session-factory>
 </hibernate-configuration>
