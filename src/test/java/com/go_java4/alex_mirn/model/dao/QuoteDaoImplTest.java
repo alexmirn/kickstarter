@@ -39,6 +39,11 @@ public class QuoteDaoImplTest {
     Quote quote = new Quote();
 
     @Test
+    public void checkCreation() {
+        quote.setQuote("ololo");
+        assertNotNull(quote);
+    }
+    @Test
     public void testGetRandom() throws Exception {
         Quote random = quoteDao.getRandom();
         Assert.assertNotNull(random);

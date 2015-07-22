@@ -31,7 +31,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService"/>
+    <!--<bean id="quoteService" class="com.go_java4.alex_mirn.service.QuoteService"/>-->
 
     <!--<bean id="quotesDB" class="com.go_java4.alex_mirn.model.daooteDaoImpl>-->
     <!--<property name="dataSource" ref="dataSource"/>    -->
