@@ -28,39 +28,3 @@ public class ProjectsController {
         return "projects";
     }
 }
-
-
-//@Controller
-//public class ProjectsServlet extends HttpServlet {
-//
-//    @Autowired
-//    ProjectService projectService;
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        int categoryId = Integer.valueOf(req.getParameter("category"));
-//        ArrayList<Project> projects = (ArrayList<Project>) projectService.getProjectsInCategory(categoryId);
-//        req.setAttribute("projects", projects);
-//        req.getRequestDispatcher("projects.jsp").forward(req, resp);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        // To DO
-//    }
-//
-//    private String getAction(HttpServletRequest req) {
-//        String requestUri = req.getRequestURI();
-//        return requestUri.substring(req.getContextPath().length(), requestUri.length());
-//    }
-//
-//    @Override
-//    public void init(ServletConfig config) throws ServletException {
-//        super.init(config);
-////		SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
-////													config.getServletContext());
-//        WebApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
-//        final AutowireCapableBeanFactory beanFactory = context.getAutowireCapableBeanFactory();
-//        beanFactory.autowireBean(this);
-//    }
-//}

@@ -27,4 +27,3 @@ public class CategoriesController {
         return "categories";
     }
 }
-
