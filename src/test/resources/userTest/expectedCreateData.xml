@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <users user_login="login 1" user_password="password 1" user_email="email1@com" user_name="name 1"/>
+    <users user_login="login 2" user_password="password 2" user_email="email2@com" user_name="name 2"/>
+    <users user_login="login 3" user_password="password 3" user_email="email3@com" user_name="name 3"/>
+    <users user_login="new login" user_password="new password" user_email="email4@com" user_name="new name"/>
+</dataset>

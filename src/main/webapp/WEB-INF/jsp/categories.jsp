@@ -23,15 +23,33 @@
 		</h2>
 	</c:forEach>
 
-	<form action="/kickstarter/categories">
-		First name:<br>
-		<input type="text" name="category">
-		<br>
-		Last name:<br>
-		<input type="text" name="lastname">
-		<br><br>
-		<input type="submit">
-	</form>
-
+	<div class="row">
+		<div class="col-xs-3">
+		</div>
+		<div class="col-xs-3">
+			<div class="text-right">
+				<form method="POST" action="/kickstarter/categories">
+					<div class="form-group">
+						<label for="userLogin">Login</label>
+						<input type="text" class="control-label" id="userLogin" placeholder="login">
+					</div>
+					<div class="form-group">
+						<label for="userPassword">Password</label>
+						<input type="password" class="control-label" id="userPassword" placeholder="password">
+					</div>
+					<div class="form-group">
+						<label for="userEmail">Email</label>
+						<input type="email" class="control-label" id="userEmail" placeholder="email">
+					</div>
+					<div class="form-group">
+						<label for="userName">Name</label>
+						<input type="text" class="control-label" id="userName" placeholder="user">
+						<br>
+						<button type="submit" class="btn btn-default">Register</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

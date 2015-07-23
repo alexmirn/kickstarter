@@ -9,7 +9,9 @@
     <category category_id="2" category_name="value 2" />
     <category category_id="3" category_name="value 3" />
 
-    <users user_id="1" user_login="admin" user_password="admin" user_email="alex_mirn@ukr.net" user_name="admin_name"/>
+    <users user_id ="1" user_login="login 1" user_password="password 1" user_email="email1@com" user_name="name 1"/>
+    <users user_id ="2" user_login="login 2" user_password="password 2" user_email="email2@com" user_name="name 2"/>
+    <users user_id ="3" user_login="login 3" user_password="password 3" user_email="email3@com" user_name="name 3"/>
 
     <project project_id="1" project_name="value 1" project_days_left="1" project_pledged="1" project_description="description 1" project_total_sum="1" category_id="1" user_id="1"/>
     <project project_id="2" project_name="value 2" project_days_left="2" project_pledged="2" project_description="description 2" project_total_sum="2" category_id="1" user_id="1"/>

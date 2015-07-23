@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service("userService")
-@Transactional
+//@Transactional
 public class UserService {
 
     @Autowired
@@ -17,4 +17,13 @@ public class UserService {
         return  userDao.getById(userId);
     }
 
+
+    public void createUser(String login, String password, String email, String userName) {
+        User user= new User(login, password, email, userName);
+        userDao.create(user);
+    }
+
+    public void createUser(User user) {
+        userDao.create(user);
+    }
 }

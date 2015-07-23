@@ -8,7 +8,7 @@ import java.util.Collection;
 public class User {
     @Id
     @Column(name="user_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @Column(name="user_login")
@@ -26,12 +26,24 @@ public class User {
     public User() {
     }
 
-    public User(int i, String login, String password, String s, String name) {
-
+    public User(int id, String login, String password, String email, String name) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
     }
 
-    public User(String login, String password, String s, String name) {
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 
+    public User(String login, String password, String email, String name) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
     }
 
     public int getId() {
@@ -73,9 +85,9 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
-    @OneToMany(mappedBy = "user")
-    private Collection<Project> project;
+//
+//    @OneToMany(mappedBy = "user")
+//    private Collection<Project> project;
 
 //    public Collection<Project> getProject() {
 //        return project;
