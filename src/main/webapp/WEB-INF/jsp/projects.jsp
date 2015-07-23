@@ -16,8 +16,11 @@
 		<h2>
 			<%--<a href="/kickstarter/oneProject?project=${project.projectId}">--%>
 			<a href="/kickstarter/oneProject/${project.projectId}">
-				<c:out value="${project}" />
+				<c:out value="${project.name}" />
 			</a>
+				<p>	Description: <c:out value="${project.shortDescription}" /> </p>
+				<p>	Nedded Money: <c:out value="${project.totalSum}" /> </p>
+				<p>	Already get money: <c:out value="${project.pledged}" /> </p>
 		</h2>
 	</c:forEach>
 </body>

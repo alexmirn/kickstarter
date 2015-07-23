@@ -11,12 +11,24 @@
 <body>
 
 <h1>Project full description:</h1>
-		<h2>
-				<c:out value="${oneProject}" />
-				<c:out value="${oneProject.history}" />
-				<c:out value="${oneProject.videoLink}" />
-				<%--<c:out value="${user.name}" />--%>
-				<%--<c:out value="${oneProject.questions}" />--%>
-		</h2>
+
+		<p> Project name: <c:out value="${oneProject.name}" /> </p>
+		<p>	Description: <c:out value="${oneProject.shortDescription}" /> </p>
+		<p>	Nedded Money: <c:out value="${oneProject.totalSum}" /> </p>
+		<p>	Already get money: <c:out value="${oneProject.pledged}" /> </p>
+		<p>	Project history: <c:out value="${oneProject.history}" /> </p>
+		<p>	Videolink: <c:out value="${oneProject.videoLink}" /> </p>
+		<p>Questions:
+		<c:forEach var="question" items="${questions}">
+			<p>Question: <c:out value="${question.name}" /></p>
+			<p>User: <c:out value="${question.user.name}" /></p>
+
+			<c:forEach var="answer" items="${question.answers}">
+				<p>Answer: <c:out value="${answer.name}" /></p>
+				<p>User: <c:out value="${answer.user.name}" /></p>
+			</c:forEach>
+
+		</c:forEach>
+		</p>
 </body>
 </html>
