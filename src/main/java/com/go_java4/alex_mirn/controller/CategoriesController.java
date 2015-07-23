@@ -26,9 +26,6 @@ public class CategoriesController {
     @Autowired
     CategoryService categoryService;
 
-    @Autowired
-    UserService userService;
-
     @RequestMapping(method = RequestMethod.GET)
     public String showCategories(ModelMap model) {
 
@@ -37,22 +34,9 @@ public class CategoriesController {
         return "categories";
     }
 
-    @RequestMapping(value = "/kickstarter/register", method = RequestMethod.POST)
-    public String registerUser(
-//          model.addAttribute("userLogin", user.getLogin());
-//          model.addAttribute("userPassword", user.getPassword());
-//          model.addAttribute("userEmail", user.getLogin());
-//          model.addAttribute("userName", user.getName());
-                               User user, ModelMap model, BindingResult result) {
-//        System.out.println(login);
-//                               BindingResult result, ModelMap model) {
-//            , BindingResult result, SessionStatus status) {
-//        User user = new User(login, password, email, userName);
-//        userService.createUser(user);
-//        status.setComplete();
-        model.addAttribute("quote", "Aleshen`ka");
-        model.addAttribute("categories", categoryService.getAll());
-        return "categories";
+    @RequestMapping(method = RequestMethod.POST)
+    public String register(ModelMap model) {
+        return "userRegistration";
     }
 }
 

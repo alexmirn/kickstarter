@@ -24,6 +24,7 @@ public class ProjectsController {
         int categoryInt = Integer.valueOf(categoryId);
         ArrayList<Project> projects = (ArrayList<Project>)projectService.getProjectsInCategory(categoryInt);
         model.addAttribute("projects", projects);
+
         return "projects";
     }
 }

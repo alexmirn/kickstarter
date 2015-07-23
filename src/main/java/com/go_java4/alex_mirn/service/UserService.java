@@ -19,7 +19,7 @@ public class UserService {
 
 
     public void createUser(String login, String password, String email, String userName) {
-        User user= new User(login, password, email, userName);
+        User user = new User(login, password, email, userName);
         userDao.create(user);
     }
 

@@ -15,6 +15,7 @@
 				<c:out value="${oneProject}" />
 				<c:out value="${oneProject.history}" />
 				<c:out value="${oneProject.videoLink}" />
+				<%--<c:out value="${user.name}" />--%>
 				<%--<c:out value="${oneProject.questions}" />--%>
 		</h2>
 </body>
