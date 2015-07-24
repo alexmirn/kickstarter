@@ -4,6 +4,7 @@ DROP TABLE "project" CASCADE;
 DROP TABLE "users" CASCADE;
 DROP TABLE "question" CASCADE;
 DROP TABLE "answer" CASCADE;
+DROP TABLE "userrole" CASCADE;
 
 
 CREATE TABLE "quote" (
@@ -35,7 +36,8 @@ CREATE TABLE "users"
     user_login VARCHAR(15) NOT NULL,
     user_password VARCHAR(15) NOT NULL,
     user_email VARCHAR(50) NOT NULL,
-    user_name VARCHAR(30) NOT NULL
+    user_name VARCHAR(30) NOT NULL,
+    userrole_id INTEGER
 );
 
 CREATE TABLE "question"
@@ -53,6 +55,10 @@ CREATE TABLE "answer" (
     "question_id" INTEGER
 );
 
+CREATE TABLE "userrole" (
+    "userrole_id" SERIAL PRIMARY KEY,
+    "userrole_name" text
+);
 
 ALTER TABLE "users"
  ADD CONSTRAINT unique_user_id UNIQUE (user_id);
@@ -77,6 +83,9 @@ FOREIGN KEY ("user_id") REFERENCES "users" ("user_id");
 ALTER TABLE "answer" ADD CONSTRAINT "fk_question_answer_id"
 FOREIGN KEY ("question_id") REFERENCES "question" ("question_id");
 
+ALTER TABLE "users" ADD CONSTRAINT "fk_userrole_users_id"
+FOREIGN KEY ("userrole_id") REFERENCES "userrole" ("userrole_id");
+
 INSERT INTO "quote" (quote_name) VALUES
 ('Impossible is nothing'),
 ('Smile makes you better'),
@@ -86,10 +95,14 @@ INSERT INTO "category" (category_name) VALUES
 ('Medicine'),
 ('Music');
 
-INSERT INTO "users" (user_login, user_password, user_email, user_name) VALUES
-('admin', 'admin', 'alex_mirn@ukr.net', 'admin_name'),
-('user', 'user', 'alexmirn2@gmail.com', 'user_name'),
-('user1', 'user1', 'alexmirn2@gmail.com', 'user_name1');
+INSERT INTO "userrole" (userrole_name) VALUES
+('ADMIN'),
+('USER');
+
+INSERT INTO "users" (user_login, user_password, user_email, user_name, userRole_id) VALUES
+('admin', 'admin', 'alex_mirn@ukr.net', 'admin_name', 1),
+('user', 'user', 'alexmirn2@gmail.com', 'user_name', 2),
+('user1', 'user1', 'alexmirn2@gmail.com', 'user_name1', 2);
 
 INSERT INTO "project" (project_name, project_description, project_total_sum,
 project_pledged, project_days_left, category_id, user_id, project_history, project_video_link) VALUES

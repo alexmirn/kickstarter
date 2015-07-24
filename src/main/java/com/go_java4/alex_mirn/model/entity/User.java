@@ -1,6 +1,7 @@
 package com.go_java4.alex_mirn.model.entity;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.Collection;
 
 @Entity
@@ -23,6 +24,9 @@ public class User {
     @Column(name="user_name")
     private String name;
 
+    @ManyToOne @JoinColumn(name = "userrole_id")
+    private UserRole userRole;
+
     public User() {
     }
 
@@ -44,6 +48,14 @@ public class User {
         this.password = password;
         this.email = email;
         this.name = name;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
     }
 
     public int getId() {
@@ -85,6 +97,8 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+
 //
 //    @OneToMany(mappedBy = "user")
 //    private Collection<Project> project;

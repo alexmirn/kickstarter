@@ -47,57 +47,57 @@ public class ProjectDaoImplTest {
         project.setName("ololo");
         assertNotNull(project);
     }
-    @Test
-    public void getAllTest() throws Exception {
-        ArrayList<Project> projects = (ArrayList<Project>) projectsDao.getProjectsInCategory(1);
-        Assert.assertEquals("value 1", projects.get(0).getName());
-        Assert.assertEquals("value 2", projects.get(1).getName());
-    }
-
-    @Test
-    public void getByIdTest() {
-        Project project = projectsDao.getById(1);
-        Assert.assertEquals("value 1", project.getName());
-    }
-
-//    TODO!!!!!!!!!!!!!!!!
+//    @Test
+//    public void getAllTest() throws Exception {
+//        ArrayList<Project> projects = (ArrayList<Project>) projectsDao.getProjectsInCategory(1);
+//        Assert.assertEquals("value 1", projects.get(0).getName());
+//        Assert.assertEquals("value 2", projects.get(1).getName());
+//    }
+//
+//    @Test
+//    public void getByIdTest() {
+//        Project project = projectsDao.getById(1);
+//        Assert.assertEquals("value 1", project.getName());
+//    }
+//
+////    TODO!!!!!!!!!!!!!!!!
+////    @Test
+////    @Rollback(false)
+////    @ExpectedDatabase(
+////            value = "classpath:projectTest/expectedCreateData.xml",
+////            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED, // in expected dataSet may not be not all columns
+////            table = "project"
+////    )
+////    public void testCreate() throws Exception {
+////        Project project = new Project(new Category(1,"value 1"),"created project", "created description",
+////                1, 1, 1, new User(2,"user","user", "alex_mirn2@gmail.com", "user_name"));
+////        projectsDao.create(project);
+////    }
+//
 //    @Test
 //    @Rollback(false)
 //    @ExpectedDatabase(
-//            value = "classpath:projectTest/expectedCreateData.xml",
-//            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED, // in expected dataSet may not be not all columns
+//            value = "classpath:projectTest/expectedUpdateData.xml",
+//            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED,
 //            table = "project"
 //    )
-//    public void testCreate() throws Exception {
-//        Project project = new Project(new Category(1,"value 1"),"created project", "created description",
-//                1, 1, 1, new User(2,"user","user", "alex_mirn2@gmail.com", "user_name"));
-//        projectsDao.create(project);
+//    public void testUpdate() throws Exception {
+//        Project updateProject = projectsDao.getById(3);
+//        updateProject.setName("updated project");
+//        projectsDao.update(updateProject);
 //    }
-
-    @Test
-    @Rollback(false)
-    @ExpectedDatabase(
-            value = "classpath:projectTest/expectedUpdateData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED,
-            table = "project"
-    )
-    public void testUpdate() throws Exception {
-        Project updateProject = projectsDao.getById(3);
-        updateProject.setName("updated project");
-        projectsDao.update(updateProject);
-    }
-
-    @Test
-    @Rollback(false)
-    @ExpectedDatabase(
-            value = "classpath:projectTest/expectedDeleteData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED,
-            table = "project"
-    )
-    public void testDelete() throws Exception {
-        Project deleteProject = projectsDao.getById(2);
-        projectsDao.delete(deleteProject);
-    }
+//
+//    @Test
+//    @Rollback(false)
+//    @ExpectedDatabase(
+//            value = "classpath:projectTest/expectedDeleteData.xml",
+//            assertionMode = DatabaseAssertionMode.NON_STRICT_UNORDERED,
+//            table = "project"
+//    )
+//    public void testDelete() throws Exception {
+//        Project deleteProject = projectsDao.getById(2);
+//        projectsDao.delete(deleteProject);
+//    }
 }
 
 

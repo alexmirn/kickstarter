@@ -7,9 +7,10 @@
     <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect
     </property>
     <property name="show_sql">true</property>
-    <mapping class="com.go_java4.alex_mirn.model.entity.Quote"/>
-    <mapping class="com.go_java4.alex_mirn.model.entity.Project"/>
-    <mapping class="com.go_java4.alex_mirn.model.entity.Category"/>
-    <mapping class="com.go_java4.alex_mirn.model.entity.User"/>
+    <!--<mapping class="com.go_java4.alex_mirn.model.entity.Quote"/>-->
+    <!--<mapping class="com.go_java4.alex_mirn.model.entity.Project"/>-->
+    <!--<mapping class="com.go_java4.alex_mirn.model.entity.Category"/>-->
+    <!--<mapping class="com.go_java4.alex_mirn.model.entity.User"/>-->
+    <!--<mapping class="com.go_java4.alex_mirn.model.entity.User"/>-->
 </session-factory>
 </hibernate-configuration>

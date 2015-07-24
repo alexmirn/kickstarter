@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertNotNull;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:application-context-test.xml"})
 @Transactional
@@ -36,6 +38,13 @@ public class UserDaoImplTest {
     @Autowired
     UserDao userDao;
 
+    User user = new User();
+
+    @Test
+    public void checkCreation() {
+        user.setName("ololo");
+        assertNotNull(user);
+    }
 //    @Test
 //    public void getAllTest() throws Exception {
 //        ArrayList<Category> categories = (ArrayList<Category>) categoriesDao.getAll();
@@ -50,17 +59,17 @@ public class UserDaoImplTest {
 //        Assert.assertEquals("value 1", category.getName());
 //    }
 
-    @Test
-    @Rollback(false)
-    @ExpectedDatabase(
-            value = "classpath:userTest/expectedCreateData.xml",
-            assertionMode = DatabaseAssertionMode.NON_STRICT, // in expected dataSet may not be not all columns
-            table = "users"
-    )
-    public void testCreate() throws Exception {
-        User user = new User(3640, "new login", "new password", "email4@com", "new name");
-        userDao.create(user);
-    }
+//    @Test
+//    @Rollback(false)
+//    @ExpectedDatabase(
+//            value = "classpath:userTest/expectedCreateData.xml",
+//            assertionMode = DatabaseAssertionMode.NON_STRICT, // in expected dataSet may not be not all columns
+//            table = "users"
+//    )
+//    public void testCreate() throws Exception {
+//        User user = new User(3640, "new login", "new password", "email4@com", "new name");
+//        userDao.create(user);
+//    }
 
 //    @Test
 //    @Rollback(false)
