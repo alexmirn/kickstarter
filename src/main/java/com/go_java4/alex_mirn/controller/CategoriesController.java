@@ -1,7 +1,9 @@
 package com.go_java4.alex_mirn.controller;
 
 
+import com.go_java4.alex_mirn.model.dao.UserRoleDao;
 import com.go_java4.alex_mirn.model.entity.User;
+import com.go_java4.alex_mirn.model.entity.UserRole;
 import com.go_java4.alex_mirn.service.CategoryService;
 import com.go_java4.alex_mirn.service.QuoteService;
 import com.go_java4.alex_mirn.service.UserService;
@@ -28,7 +30,6 @@ public class CategoriesController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showCategories(ModelMap model) {
-
         model.addAttribute("quote", quoteService.getRandom());
         model.addAttribute("categories", categoryService.getAll());
         return "categories";

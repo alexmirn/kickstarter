@@ -15,8 +15,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 @Service("userDetailsService")
-//@Transactional
-public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+@Transactional
+public class UserDetailsServiceImpl implements UserDetailsServiceExtended {
 
     @Autowired
     private UserDao userDao;
@@ -47,28 +47,35 @@ public class UserDetailsService implements org.springframework.security.core.use
     }
 
 
+    @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Assembler assembler = new Assembler();
         User user = userDao.getByLogin(s);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        return assembler.buildUserFromUserEntity(user);
+        return buildUserFromUserEntity(user);
     }
 
-    private class Assembler {
-        org.springframework.security.core.userdetails.User buildUserFromUserEntity(com.go_java4.alex_mirn.model.entity.User userEntity) {
-            String username = userEntity.getLogin();
-            String password = userEntity.getPassword();
-//            boolean enabled = userEntity.isActive();
-//            boolean accountNonExpired = userEntity.isActive();
-//            boolean credentialsNonExpired = userEntity.isActive();
-//            boolean accountNonLocked = userEntity.isActive();
-            Collection<SimpleGrantedAuthority> authorities = new LinkedList<>();
-            authorities.add(new SimpleGrantedAuthority(userEntity.getUserRole().getName()));
-//            org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-            org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(username, password, authorities);
-            return user;
-        }
+    private org.springframework.security.core.userdetails.User
+    buildUserFromUserEntity(com.go_java4.alex_mirn.model.entity.User userEntity) {
+        String username = userEntity.getLogin();
+        String password = userEntity.getPassword();
+        boolean enabled = true;
+        boolean accountNonExpired = true;
+        boolean credentialsNonExpired = true;
+        boolean accountNonLocked = true;
+//        boolean enabled = userEntity.isActive();
+//        boolean accountNonExpired = userEntity.isActive();
+//        boolean credentialsNonExpired = userEntity.isActive();
+//        boolean accountNonLocked = userEntity.isActive();
+        Collection<SimpleGrantedAuthority> authorities = new LinkedList<>();
+        authorities.add(new SimpleGrantedAuthority(userEntity.getUserRole().getName()));
+
+        org.springframework.security.core.userdetails.User user =
+                new org.springframework.security.core.userdetails.User(username, password,
+                        enabled, accountNonExpired,
+                        credentialsNonExpired, accountNonLocked,
+                        authorities);
+        return user;
     }
 }

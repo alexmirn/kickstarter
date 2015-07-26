@@ -30,5 +30,18 @@
 
 		</c:forEach>
 		</p>
+		<div class="row">
+			<div class="col-xs-9">
+			</div>
+			<div class="col-xs-3">
+				<div class="text-right">
+					<form method="POST" action="/kickstarter/logout">
+						<div class="form-group">
+							<button type="submit" class="btn btn-default">Logout</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

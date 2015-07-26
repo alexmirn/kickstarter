@@ -96,8 +96,8 @@ INSERT INTO "category" (category_name) VALUES
 ('Music');
 
 INSERT INTO "userrole" (userrole_name) VALUES
-('ADMIN'),
-('USER');
+('ADMIN_ROLE'),
+('USER_ROLE');
 
 INSERT INTO "users" (user_login, user_password, user_email, user_name, userRole_id) VALUES
 ('admin', 'admin', 'alex_mirn@ukr.net', 'admin_name', 1),

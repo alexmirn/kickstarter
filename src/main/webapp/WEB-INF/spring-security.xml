@@ -16,9 +16,10 @@
     <intercept-url pattern="/projects/*/comments/add" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')"/>
     <intercept-url pattern="/projects/*/donate" access="hasRole('ROLE_USER')"/>
     <logout logout-url="/logout"
-            logout-success-url="/category"/>
+            logout-success-url="/categories"/>
     <form-login
-            authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler" authentication-failure-url="http://cdn.alltheragefaces.com/img/faces/large/fuck-yeah-gtfo-l.png" />
+            authentication-success-handler-ref="savedRequestAwareAuthenticationSuccessHandler"
+            authentication-failure-url="https://en.wikipedia.org/wiki/Error" />
     <anonymous username="guest"
                granted-authority="ROLE_ANONYMOUS"/>
     <csrf disabled="true"/>
@@ -27,7 +28,7 @@
 
   <global-method-security secured-annotations="enabled" proxy-target-class="true"/>
 
-  <beans:bean id="userDetailsService" class="com.go_java4.alex_mirn.service.UserDetailsService"/>
+  <beans:bean id="userDetailsService" class="com.go_java4.alex_mirn.service.UserDetailsServiceImpl"/>
 
   <beans:bean id="savedRequestAwareAuthenticationSuccessHandler"
               class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
