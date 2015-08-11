@@ -12,16 +12,24 @@ public class CategoryService {
 
     @Autowired
     private CategoriesDao categoriesDao;
-//
+
     public List<Category> getAll() {
         return categoriesDao.getAll();
     }
-//
-//    public void setCategoryJDBCTemplate(CategoryJDBCTemplate categoryJDBCTemplate) {
-//        this.categoryJDBCTemplate = categoryJDBCTemplate;
-//    }
-//
-//    public CategoryJDBCTemplate getCategoryJDBCTemplate() {
-//        return categoryJDBCTemplate;
-//    }
+
+    public void create(Category category) {
+        categoriesDao.create(category);
+    }
+
+    public void update(Category category) {
+        categoriesDao.update(category);
+    }
+
+    public Category getById(Integer categoryId) {
+        return categoriesDao.getById(categoryId);
+    }
+
+    public void delete(Category category) {
+        categoriesDao.delete(category);
+    }
 }

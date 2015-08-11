@@ -1,12 +1,13 @@
 package com.go_java4.alex_mirn.controller.rest;
 
+import com.go_java4.alex_mirn.model.entity.Category;
 import com.go_java4.alex_mirn.model.entity.Project;
+import com.go_java4.alex_mirn.service.CategoryService;
 import com.go_java4.alex_mirn.service.ProjectService;
+import com.go_java4.alex_mirn.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,10 +16,44 @@ import java.util.List;
 public class CategoryRest {
 
     @Autowired
+    QuoteService quoteService;
+
+    @Autowired
+    CategoryService categoryService;
+
+    @Autowired
     ProjectService projectService;
 
-    @RequestMapping(value="/projectsInCategory/{categoryId}", method = RequestMethod.GET)
-    public List<Project> getProjectsInCategory(@PathVariable int categoryId) {
-        return projectService.getProjectsInCategory(categoryId);
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Category> showCategories(ModelMap model) {
+
+        model.addAttribute("quote", quoteService.getRandom());
+        model.addAttribute("listCategories", categoryService.getAll());
+        return categoryService.getAll();
+    }
+
+    @RequestMapping(value = "/{categoryId}", method = RequestMethod.GET)
+    public List<Project> showCategory(ModelMap modelMap, @PathVariable int categoryId) {
+        Category category = categoryService.getById(categoryId);
+
+        List<Project> projectsForCategory = projectService.getProjectsInCategory(categoryId);
+
+        modelMap.addAttribute("projects", projectsForCategory);
+        modelMap.addAttribute("category_name", category.getName());
+        modelMap.addAttribute("category_id", categoryId);
+
+        return projectsForCategory;
+    }
+
+    @RequestMapping(value = "/{categoryId}/delete", method = RequestMethod.GET)
+    public String deleteCategory(@PathVariable int categoryId) {
+        Category category = categoryService.getById(categoryId);
+        categoryService.delete(category);
+        return "redirect:/categories";
+    }
+
+    @ModelAttribute("allCategories")
+    public List<Category> getAllCategories() {
+        return categoryService.getAll();
     }
 }
